@@ -1,0 +1,472 @@
+/* Global Setup */
+:root {
+    --primary-color: #1877F2; /* Facebook Blue */
+    --secondary-color: #B0B3B8; /* Muted Gray for secondary elements */
+    --bg-page: #18191A; /* Dark Charcoal Background (The Wall) */
+    --bg-section: #242526; /* Lighter Charcoal for main sections/cards */
+    --bg-card: #2D2E2F; /* Slightly darker card background for contrast */
+    --text-dark: #E4E6EB; /* Light Text Color */
+    --text-light: #FFFFFF; /* Pure White for contrast */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-dark); 
+    background-color: var(--bg-page); 
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0;
+}
+
+/* Page Visibility Control */
+.hidden-page {
+    display: none !important;
+}
+.active-page {
+    display: block !important;
+}
+
+/* ==================================== */
+/* --- HEADER AND NAVIGATION (MENU BAR) --- */
+/* ==================================== */
+.main-header {
+    background: var(--bg-section); 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.5); 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    color: var(--primary-color); 
+}
+.main-header ul {
+    list-style: none;
+    display: flex;
+}
+.main-header ul li a {
+    text-decoration: none;
+    color: var(--text-dark); 
+    padding: 10px 15px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+/* Active Page Indicator (Aesthetic Improvement) */
+.main-header ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color); 
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* Highlight for Active Link */
+.main-header ul li a.active {
+    color: var(--text-light); 
+    font-weight: 700;
+}
+
+.main-header ul li a.active::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Highlight for Hover Link */
+.main-header ul li a:hover {
+    color: var(--primary-color);
+}
+
+.main-header ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+
+/* General Section Styling */
+section {
+    background-color: var(--bg-section); 
+    padding: 80px 0; 
+    margin-bottom: 25px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+}
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--text-dark); 
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    letter-spacing: 0.5px; 
+}
+.primary-btn {
+    background-color: var(--primary-color); 
+    color: var(--text-light); 
+}
+.primary-btn:hover {
+    background-color: #166ADA; 
+}
+
+/* --- HERO SECTION (Home) --- */
+.hero-section {
+    background: var(--bg-section); 
+    margin-bottom: 25px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.hero-section .container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    min-height: 70vh;
+}
+.hero-content {
+    flex: 2;
+    line-height: 1.7; 
+    letter-spacing: 0.3px; 
+}
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+.hero-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+    display: block;
+    margin: 0 auto;
+}
+.greeting {
+    font-size: 1.2em;
+    color: var(--secondary-color); 
+}
+.hero-content h2 {
+    font-size: 4em;
+    margin: 0;
+    color: var(--primary-color); 
+    text-align: left;
+}
+.role {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: var(--text-dark); 
+}
+.summary {
+    margin-bottom: 30px;
+}
+
+/* ==================================== */
+/* --- PORTFOLIO SECTION (Work) --- */
+/* ==================================== */
+.portfolio-section {
+    background-color: var(--bg-section); 
+    padding: 80px 0;
+}
+
+.portfolio-section h2 {
+    font-size: 3em;
+    margin-bottom: 60px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 40px; 
+    padding: 0 20px;
+}
+
+.portfolio-item {
+    background-color: var(--bg-card); 
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); 
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+}
+
+.portfolio-item img {
+    display: block;
+    width: 100%;
+    height: 250px; 
+    object-fit: contain; 
+    background-color: var(--bg-card); 
+    border-bottom: 1px solid #3A3B3C; 
+}
+
+.portfolio-item::before {
+    content: none; 
+}
+
+.item-info {
+    padding: 25px; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    color: var(--text-dark); 
+    margin-bottom: 10px;
+}
+
+.item-info p {
+    font-size: 1em;
+    color: var(--secondary-color); 
+    margin-bottom: 15px;
+    flex-grow: 1; 
+}
+
+.item-info .tags {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.item-info .tags span {
+    background-color: #3A3B3C; 
+    color: var(--secondary-color); 
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-right: 5px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/* ==================================== */
+/* --- CERTIFICATE SECTION --- */
+/* ==================================== */
+.certificate-section {
+    background-color: var(--bg-section); 
+    padding: 80px 0;
+}
+
+.certificate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.certificate-item {
+    background: var(--bg-card); 
+    border-radius: 12px; 
+    padding: 25px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certificate-item:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+}
+
+.certificate-item .certificate-preview-img {
+    display: block;
+    width: 100%;
+    height: 160px; 
+    object-fit: contain; 
+    background-color: var(--bg-card); 
+    border-radius: 8px; 
+    margin-bottom: 20px;
+}
+
+.certificate-item .icon {
+    display: none; 
+}
+
+.certificate-item h3 {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.certificate-item p {
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
+.certificate-item p:last-of-type {
+    flex-grow: 1; 
+    margin-bottom: 25px !important; 
+}
+
+.certificate-item .btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    margin-top: auto;
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--bg-section); 
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 30px 0; 
+    border-top: 1px solid #3A3B3C; 
+    margin-top: 0; 
+}
+
+.social-icons {
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    color: var(--primary-color); 
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #166ADA;
+}
+
+/* ==================================== */
+/* --- MODAL STYLES (DARK THEME) --- */
+/* ==================================== */
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+/* Modal Content (The Image Box) */
+.modal-content {
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 900px;
+    background-color: var(--bg-section); 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    position: relative;
+    text-align: center;
+}
+
+/* Modal Image */
+#modal-cert-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 4px;
+}
+
+/* The Close Button */
+.modal-close {
+    color: var(--text-dark); 
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: var(--primary-color); 
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Title inside modal */
+#modal-title {
+    color: var(--text-dark); 
+    margin-top: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content h2 {
+        font-size: 3em;
+        text-align: center;
+    }
+    .hero-image {
+        order: -1;
+        margin-bottom: 20px;
+    }
+    .hero-image img {
+        width: 250px;
+        height: 250px;
+    }
+    .main-header .container {
+        flex-direction: column;
+    }
+    .main-header ul {
+        margin-top: 10px;
+        justify-content: center;
+    }
+    .portfolio-grid,
+    .certificate-grid { 
+        grid-template-columns: 1fr; 
+        gap: 20px;
+        padding: 0;
+    }
+}
